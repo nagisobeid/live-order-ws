@@ -90,6 +90,10 @@ const cleanUpInactiveMerchants = () => {
 // Run the cleanup task every minute
 setInterval(cleanUpInactiveMerchants, 10000);
 
+app.get('/', (req, res) => {
+	res.status(200).json({success: true, heartBeat: 'healthy'});
+});
+
 // HTTP API: Endpoint to receive orders from Android apps
 app.post('/api/sync-orders-bulk', (req, res) => {
     const { merchantId, orderJsonList } = req.body;
